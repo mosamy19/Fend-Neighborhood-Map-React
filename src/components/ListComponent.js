@@ -12,7 +12,7 @@ class ListComponent extends Component {
 
     // when the user clicks on an item in the list elements it fires the InfoWindow on the map to display the place information
     onPlaceClick = (name) => {
-        this.props.markers.map((marker) => {
+	    this.props.markers.forEach((marker) => {
             if (marker.title === name) {
                 window.google.maps.event.trigger(marker, 'click');
             }
@@ -22,13 +22,14 @@ class ListComponent extends Component {
 
     // Firing the InfoWindow on the map to display the place information by pressing the enter key when the element is on focus
     onEnterClicked = (name, key) => {
-        if (key == 13) {
-            this.props.markers.map((marker) => {
+        if (key === 13) {
+           this.props.markers.forEach((marker) => {
                 if (marker.title === name) {
                     window.google.maps.event.trigger(marker, 'click');
                 }
             })
         }
+
     }
 
 

@@ -26,8 +26,9 @@ class App extends Component {
 
   // loadMap function for loading the maps javaScript API and initialize map
   loadMap = () => {
-    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDG-L4Dw702c86tWlXr8KWjm4tw3Lqizno&callback=initMap");
-    window.initMap = this.initMap;
+    // it was maps.google;
+  loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDG-L4Dw702c86tWlXr8KWjm4tw3Lqizno&callback=initMap");
+	  window.initMap = this.initMap;
 
   };
 
@@ -46,8 +47,8 @@ class App extends Component {
     // Then add response to the Locations state property.
     // And firing loadMap function to initialize Map view
     axios.get(url + new URLSearchParams(params)).then(res => {
-      this.setState({
-        Locations: res.data.response.groups[0].items,
+	     this.setState({
+        Locations: res.data.response.groups[0].items
       }, this.loadMap)
     }).catch((err) => console.log("Error: ", err))
   }
@@ -66,7 +67,7 @@ class App extends Component {
     let infowindow = new window.google.maps.InfoWindow()
 
     // Map in state Locations array and create a marker for each place
-    this.state.Locations.map((loc) => {
+    this.state.Locations.forEach((loc) => {
       let marker = new window.google.maps.Marker({
         position: { lat: loc.venue.location.lat, lng: loc.venue.location.lng },
         map: map,
@@ -126,7 +127,7 @@ class App extends Component {
 
   // Show/Hide list menu on the mobile view by pressing the enter key when the hamburger menu container is on focus.
   onEnterClicked = (key) => {
-    if (key == 13) {
+    if (key === 13) {
       this.displayList();
     }
   }
@@ -135,11 +136,12 @@ class App extends Component {
       <div className="App">
         <ListComponent query={this.state.query} markers={this.state.markers} results={this.state.results} searchPlaces={this.searchPlaces} locations={this.state.Locations} />
         <div className="map-container">
-          <div id="map">
+          <div id="map" role="application" aria-hidden="true">
           </div>
         </div>
-        <div tabIndex="0" aria-label="Places Menu" id="hamburger-menu" onKeyUp={(event) => this.onEnterClicked(event.which)} onClick={this.displayList}><i class="fas fa-lg fa-bars"></i></div>
+        <div tabIndex="0" aria-label="Places Menu" id="hamburger-menu" onKeyUp={(event) => this.onEnterClicked(event.which)} onClick={this.displayList}><i className="fas fa-lg fa-bars"></i></div>
       </div>
+
     );
   }
 }
@@ -150,9 +152,19 @@ function loadScript(url) {
   var index = window.document.getElementsByTagName("script")[0];
   var script = window.document.createElement('script');
   script.src = url;
-  script.async = true;
-  script.defer = true;
+  script.async = true;    
+  script.defer = true; 
+  script.onerror = function() {
+  	var mapEl = document.getElementById("map");
+	  mapEl.innerHTML = `<div class="err-container">
+	 <h1><i class="fas fa-2x fa-exclamation-triangle"></i></h1> 
+	  <h1>An Error Occurred!</h1>
+	  <p>Please check your connection and refresh the page</p>
+	  </div>`;
+	
+  }
   index.parentNode.insertBefore(script, index);
+	
 
 }
 export default App;

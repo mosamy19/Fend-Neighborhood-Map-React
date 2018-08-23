@@ -129,4 +129,22 @@
   }
 } 
 
- 
+
+.err-container { 
+	padding: 30px;
+	padding-top: 120px;
+	display: flex;
+	flex-direction: column;
+}
+
+.err-container h1:first-child {
+	text-align: center;
+}
+
+.err-container h1, .err-container p {
+	color: #777;
+}
+
+.err-container h1 i {
+	color: orange;
+}
