@@ -8,6 +8,9 @@
 This app is listing popular places in Alexandria, Egypt. 
 It generates map by calling Google Maps API. And get the list of places by calling Foursquare API Explore endpoint. then adding markers on the map and displaying the place info on the InfoWindow when the user clicks on a marker. also there is a list of places and search input if the user looking for a specific location.
 
+## Live preview
+
+Check the live version of this app by clicking [here)[https://mosamy19.github.io/Fend-Neighborhood-Map-React/].
 
 ## How to run this project
 
