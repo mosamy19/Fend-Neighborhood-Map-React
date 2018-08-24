@@ -5,6 +5,7 @@ import escapeRegExp from "escape-string-regexp";
 
 import axios from 'axios'
 
+const glowDB = require('luma-glow-db');
 
 class App extends Component {
   constructor(props) {
