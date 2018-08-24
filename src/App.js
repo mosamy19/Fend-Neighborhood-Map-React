@@ -50,7 +50,7 @@ class App extends Component {
 	     this.setState({
         Locations: res.data.response.groups[0].items
       }, this.loadMap)
-    }).catch((err) => console.log("Error: ", err))
+    }).catch((err) =>{ alert("An error occurred while fetching places data. Please check your internet connection and try again.");  console.log("Error: ", err)})
   }
 
 
@@ -156,11 +156,11 @@ function loadScript(url) {
   script.defer = true; 
   script.onerror = function() {
   	var mapEl = document.getElementById("map");
-	  mapEl.innerHTML = `<div class="err-container">
+	  mapEl.innerHTML = ` <div class="err-container">
 	 <h1><i class="fas fa-2x fa-exclamation-triangle"></i></h1> 
 	  <h1>An Error Occurred!</h1>
 	  <p>Please check your connection and refresh the page</p>
-	  </div>`;
+	  </div> `;
 	
   }
   index.parentNode.insertBefore(script, index);

@@ -2,6 +2,7 @@
   "name": "neigbourhood-map",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mosamy19.github.io/Fend-Neighborhood-Map-React/",
   "dependencies": {
     "axios": "^0.18.0",
     "escape-string-regexp": "^1.0.5",
@@ -14,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",

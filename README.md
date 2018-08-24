@@ -20,6 +20,16 @@ It generates map by calling Google Maps API. And get the list of places by calli
 * navigate to ``` localhost:3000 ``` to view the application in your browser
 
 
+## Production build:
+
+* run  ``` npm run build ``` in the terminal window
+
+* install the static server to run the production build of this app by running ``` npm install -g serve ``` 
+
+* run ``` serve -s build ``` to run the production build, to make sure that the project works fine and serviceWorker does its job for making the app available offline.
+
+
+
 ## Project dependencies:
 
 This project built with Vanilla Javascript(ES6) and uses external libraries and APIs
